@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="pl" >
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    i {
+
+        font-family: Impact;
+        letter-spacing: 1mm;
+
+    }
+    body{text-align: center;}
+</style>
+
+<body >
+    <p id="siurek"></p>
+    <p><i id="time"></i></p>
+    <br />
+    <input type="date" id="r">
+    <button onclick="chuj()" style="margin: 0; display: inline;">Licz</button><br /><p></p><br/>
+    <p style="margin: 0; display: inline;" >Dni: </p><p style="margin: 0; display: inline;" id="j"></p><p style="margin: 0; display: inline;">    Godziny: </p><p style="margin: 0; display: inline;" id="g"></p>
+    <p id="dzien"></p>
+    
+    <script>
+      
+        let a;
+        let time;
+        setInterval(() => {
+            a = new Date();
+            time = '   ' + a.getHours() + ':' + a.getMinutes() + ':' + a.getSeconds();
+            document.getElementById('time').innerHTML = time;
+        }, 1000);
+ 
+        
+        
+        function chuj() {
+
+            let datee = new Date();
+            let siur = new Date(document.getElementById("r").value);
+
+            let minus = datee - siur;
+            dni = Math.floor(minus / (1000 * 60 * 60 * 24 ));
+            dniG = Math.floor(minus / (1000 * 60 * 60 ));
+            
+            
+
+            let now = siur;
+            let days = ["Niedziela", "Poniedziałek", "Wtorek", "Środa", "Czwartek", "Piątek", "Sobota"];
+
+            
+            document.getElementById('dzien').innerHTML = `Dzień tygodnia: ${ days[now.getDay()] }`;
+
+
+            
+            document.getElementById('j').innerHTML = dni;
+            document.getElementById('g').innerHTML = dniG;
+
+        }
+
+
+
+
+
+
+    </script>
+</body>
+
+</html>
